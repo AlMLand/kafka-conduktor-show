@@ -1,0 +1,13 @@
+FROM package "kotlin" :
+- send the worker config to the kafka connector:
+    curl -i -H "Content-Type: application/json" -X PUT http://localhost:8083/connectors/developers/config --upload-file developers.json
+- fetch all already installed connector plugins (after restart):
+    curl -i http://localhost:8083/connector-plugins
+- show the status from connector:
+    curl -i http://localhost:8083/connectors/developers/status
+- paused the kafka connect:
+    curl -i -X PUT http://localhost:8083/connectors/developers/pause
+- start the kafka connect after pause:
+    curl -i -X PUT http://localhost:8083/connectors/developers/resume
+- delete the kafka connect:
+    curl -i -X DELETE http://localhost:8083/connectors/developers

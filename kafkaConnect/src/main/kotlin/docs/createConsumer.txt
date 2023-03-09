@@ -1,0 +1,2 @@
+check with own kafka consumer:
+    docker exec -it schema-registry kafka-avro-console-consumer --bootstrap-server broker0:29092 --topic developers --from-beginning --property "schema.registry.url=http://localhost:8081" --group first_developers_group

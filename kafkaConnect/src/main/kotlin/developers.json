@@ -1,0 +1,14 @@
+{
+  "name": "developers",
+  "connector.class": "io.confluent.kafka.connect.datagen.DatagenConnector",
+  "kafka.topic": "developers",
+  "schema.string": "{\"type\": \"record\",\"name\": \"Technologist\",\"fields\":[{\"name\": \"firstName\",\"type\":{\"type\": \"string\",\"arg.properties\":{\"options\":[\"Alex\",\"Paul\",\"Daniel\",\"Steve\"]}}},{\"name\":\"lastName\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"First\",\"Second\",\"Third\"]}}},{\"name\":\"title\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"AAA\",\"BBB\",\"CCC\"]}}}]}",
+  "schema.keyfield": "lastName",
+  "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+  "value.converter": "io.confluent.connect.avro.AvroConverter",
+  "value.converter.schema.registry.url": "http://schema-registry:8081",
+  "value.converter.schemas.enable": "false",
+  "max.interval": "1000",
+  "iterations": "1000",
+  "tasks.max": "1"
+}
