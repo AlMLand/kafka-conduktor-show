@@ -13,6 +13,6 @@ internal fun kafkaConsumer(): KafkaConsumer<String, String> = KafkaConsumer(Prop
     setProperty(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
     setProperty(KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer::class.java.name)
     setProperty(VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer::class.java.name)
-    setProperty(AUTO_OFFSET_RESET_CONFIG, "latest")
+    setProperty(AUTO_OFFSET_RESET_CONFIG, "earliest")
     setProperty(GROUP_ID_CONFIG, "consumer_opensearch")
 })
