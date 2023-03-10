@@ -2,6 +2,7 @@ package com.alexexample.consumer
 
 import org.apache.http.HttpHost
 import org.apache.http.auth.AuthScope
+import org.apache.http.auth.AuthScope.ANY
 import org.apache.http.auth.UsernamePasswordCredentials
 import org.apache.http.impl.client.BasicCredentialsProvider
 import org.apache.http.impl.client.DefaultConnectionKeepAliveStrategy
@@ -23,7 +24,7 @@ internal fun restHighLevelClient(): RestHighLevelClient =
         else
             uri.userInfo.split(":").let { auth ->
                 BasicCredentialsProvider().apply {
-                    setCredentials(AuthScope.ANY, UsernamePasswordCredentials(auth[0], auth[1]))
+                    setCredentials(ANY, UsernamePasswordCredentials(auth[0], auth[1]))
                 }.let { credentials ->
                     RestHighLevelClient(RestClient.builder(HttpHost(uri.host, uri.port, uri.scheme)).apply {
                         setHttpClientConfigCallback { httpAsyncClientBuilder ->

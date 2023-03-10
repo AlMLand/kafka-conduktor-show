@@ -39,7 +39,7 @@ fun main() {
 }
 
 private fun eventSource(kafkaProducer: KafkaProducer<String, String>, topic: String) =
-    EventSource.Builder(WikimediaChangeHandler(kafkaProducer, topic), URI.create(URL)).build()
+    EventSource.Builder(WikimediaChangeHandler(topic, kafkaProducer), URI.create(URL)).build()
 
 private fun properties() = Properties().apply {
     setProperty(BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS)

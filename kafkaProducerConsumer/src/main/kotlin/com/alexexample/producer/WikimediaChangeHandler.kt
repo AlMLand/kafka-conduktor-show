@@ -13,11 +13,13 @@ import java.util.TimeZone
 import java.util.UUID
 
 class WikimediaChangeHandler(
-    private val kafkaProducer: KafkaProducer<String, String>,
-    private val topic: String
+    private val topic: String,
+    private val kafkaProducer: KafkaProducer<String, String>
 ) : EventHandler {
 
-    private val logger = LoggerFactory.getLogger(this::class.java)
+    companion object {
+        private val logger = LoggerFactory.getLogger(this::class.java)
+    }
 
     override fun onClosed() {
         kafkaProducer.close()
